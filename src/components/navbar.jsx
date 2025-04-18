@@ -12,7 +12,7 @@ function Navbar(){
                 <img src={light} alt="" />
             </div>
             <div className="searchBar">
-                <Input placeholder = "Write the task here" class="searchbarInput"/>
+                <Input placeholder = "Write your task here" class="searchbarInput"/>
                 <Dropdown options={priorityOptions} class="priority" type="Priority"/>
                 <Dropdown options={categories} name="categories" class="categories" type="Category"/>
                 <Button name = "Add" class="addBtn"/>
