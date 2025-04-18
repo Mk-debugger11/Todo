@@ -1,0 +1,75 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.navbar{
+  height: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 25px;
+  background-color: #ffffff;
+  box-shadow: 5px 0px 5px rgb(156, 155, 155);
+}
+.logo img{
+  height: 150px;
+  width: 150px;
+}
+.searchbarInput{
+  display: block;
+  width: 600px;
+  height: 50px;
+  font-size: 22px;
+  padding: 0 10px;
+  color: #0f0f0f;
+  border-radius: 10px;
+  border: 1.5px solid #c7c7c7;
+  margin: 15px 0;
+}
+.searchbarInput:focus{
+  outline: none;
+}
+.addBtn{
+  width: 66px;
+  height: 46px;
+  background-color: #0389ff;
+  border: 1px solid rgb(230, 226, 226);
+  font-size: 25px;
+  color: rgb(244, 240, 240);
+  border-radius: 5px;
+  position: relative;
+  left: 264px;
+  cursor: pointer;
+}
+.thmBtn{
+  width: 80px;
+  height: 46px;
+  background-color: #0389ff;
+  border: 1px solid rgb(230, 226, 226);
+  font-size: 20px;
+  color: rgb(244, 240, 240);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.priority{
+  width: 100px;
+  height: 35px;
+  border-radius: 5px;
+  border: 1.5px solid #c7c7c7;
+  font-size: 16px;
+  color: rgb(51, 51, 51);
+  margin-right: 10px;
+}
+.categories{
+  width: 150px;
+  height: 35px;
+  border-radius: 5px;
+  border: 1.5px solid #c7c7c7;
+  font-size: 16px;
+  color: rgb(51, 51, 51);
+  margin-right: 10px;
+}
+.addCtg{
+  border: 2px solid black;
+}
