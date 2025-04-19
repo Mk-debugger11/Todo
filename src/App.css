@@ -84,7 +84,7 @@
   text-align: center;
   padding: 10px;
 }
-.done{
+.done1{
   width: 50vw;
   text-align: center;
   padding: 10px;
@@ -100,20 +100,28 @@
   bottom: -5px;
   margin-right: 5px;
 }
+.cardParent{
+  display: flex;
+}
 .card{
   margin-bottom: 20px;
   width: 400px;
   height: 150px;
-  border: 2px solid #4f4e4e; /* Inner border */
-  box-shadow: 0 0 0 4px #4f4e4e;
+  border: 3px solid #e0e0e0; /* Inner border */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   display: flex;
-  justify-content: space-between;
-  padding: 10px;
+  justify-content: flex-start;
+  padding: 14px;
+  flex-shrink: 0;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 .align{
   display: flex;
   flex-direction: column;
   align-items: center;
+  height:676px;
+  overflow-y: scroll;
 }
 .left,.right{
   display: flex;
@@ -121,8 +129,13 @@
   justify-content: space-between;
   align-items: flex-start;
 }
+/* .card .left{
+  position: relative;
+  left: -20px;
+} */
 .right{
   align-items: flex-end;
+  margin-left: auto;
 }
 .crud{
   display: flex;
@@ -141,8 +154,63 @@
 .pri{
   position: relative;
   border: none;
-  background-color: #e53935;
   border-radius: 10px;
   padding: 3px 6px;
-  color:  #f3b6b6;
+}
+.high{
+  background-color: #e53935;
+  color:  #facece;
+}
+.medium{
+  background-color: #FB8C00;
+  color:  #f5ebe1;
+}
+.low{
+  background-color: #66BB6A;
+  color:  rgb(244, 244, 244);
+}
+.editBtn{
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: none;
+}
+.editBtn img{
+  height: 25px;
+  width: 25px;
+}
+.done .edit,.done .delete{
+  display: none;
+}
+.done{
+  height: 120px;
+  background-color: #f0f0f0;       
+  color: #888;                     
+  text-decoration: line-through;   
+  opacity: 0.7;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.done .checkbox{
+  display: none;
+}
+.done .left{
+  gap:15px;
+  position: relative;
+  left:20px;
+}
+.status{
+  font-size: 40px;
+  font-weight: 300;
+  color: #918e8e;
+}
+.checkbox{
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(233, 231, 231);
+  height: 150px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
