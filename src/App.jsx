@@ -53,15 +53,25 @@ function App() {
       <Navbar></Navbar>
       <div className="body">
         <div className="todo align">
-          <div><img src={todo1} className='im'/><h1 className='heading'>To-do</h1></div>
+          <div>
+            <img src={todo1} className='im'/>
+            <h1 className='heading'>To-do</h1>
+          </div>
           {!(todo.length === 0) ? todo.map((ele)=>{
-            return <Card title = {ele.title} category = {ele.category} priority={ele.priority}/>
+            return (
+            <Card title = {ele.title} category = {ele.category} priority={ele.priority}/>
+            )
           }): <h3 className='status'>Add some tasks</h3>}
         </div>
         <div className="done1 align">
-          <div><img src={done1} className='im'/><h1 className='heading'>Done</h1></div>
+          <div>
+            <img src={done1} className='im'/>
+            <h1 className='heading'>Done</h1>
+          </div>
           { !(done.length === 0) ? done.map((ele)=>{
-            return <Card title = {ele.title} category = {ele.category} priority={ele.priority} doneCard = "done"/>
+            return (
+            <Card title = {ele.title} category = {ele.category} priority={ele.priority} doneCard = "done"/>
+          )
           }) : <h3 className='status' >No tasks completed</h3>}
         </div>
       </div>

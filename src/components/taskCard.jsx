@@ -17,7 +17,7 @@ function Card(props) {
             setColor("low")
         }
     }
-    useEffect(Color, [color])
+    useEffect(Color, [])
     return (
         <div className={`cardParent ${props.doneCard}`}>
             <div className="checkbox">
