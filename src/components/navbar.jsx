@@ -5,6 +5,7 @@ import Input from './inputbar';
 import Button from './button';
 import Dropdown from './dropdown';
 import logo from '../assets/logo.png'
+import logoSmall from '../assets/logoSmall.png'
 function Navbar({ taskArray,theme1 }) {
     const [theme,setTheme] = useState('Light')
     // priority array to show priority for tasks
@@ -93,7 +94,8 @@ function Navbar({ taskArray,theme1 }) {
     return (
         <div className= {`navbar ${theme}`} >
             <div className="logo">
-                <img src={theme === "Light" ? light : logo} alt="" />
+                <img src={theme === "Light" ? light : logo} alt="" className='logoi'/>
+                <img src={theme === "Light" ? light : logoSmall} alt="" className='smallLogo'/>
             </div>
             <div className="searchBar">
                 <Input placeholder="Write your task here" class="searchbarInput" onchange={handleChange} value={taskInput} />

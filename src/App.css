@@ -12,7 +12,10 @@
   background-color: #ffffff;
   box-shadow: 5px 7px 5px rgb(216, 215, 215);
 }
-.logo img{
+.smallLogo{
+  display: none;
+}
+.logo .logoi{
   height: 150px;
   width: 150px;
 }
@@ -38,9 +41,8 @@
   font-size: 25px;
   color: rgb(244, 240, 240);
   border-radius: 5px;
-  position: absolute;
-  left: 1024px;
-  top: 90px;
+  position: relative;
+  left: 150px;
   cursor: pointer;
 }
 .thmBtn{
@@ -52,6 +54,8 @@
   color: rgb(244, 240, 240);
   border-radius: 5px;
   cursor: pointer;
+  top: -20px;
+  position: relative;
 }
 .priority{
   width: 100px;
@@ -97,6 +101,8 @@
 .body{
   display: flex;
   justify-content: space-between;
+  margin-top: 3px;
+  height: 100%;
 }
 .todo{
   width: 50vw;
@@ -114,6 +120,7 @@
   font-weight: 400;
   color: rgb(85, 85, 85);
   display: inline;
+  margin-bottom: 5px;
 }
 .im{
   width: 30px;
@@ -123,6 +130,7 @@
 }
 .cardParent{
   display: flex;
+  margin-top: 10px;
 }
 .card{
   margin-bottom: 20px;
@@ -141,7 +149,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height:680px;
   overflow-y: scroll;
 }
 .align::-webkit-scrollbar {
@@ -290,4 +297,306 @@
 .Dark .done{
   background-color: #373535;
   color: white;
+}
+.Dark .heading{
+  color: white;
+}
+@media(max-width:1200px){
+  .searchbarInput{
+    width: 550px;
+  }
+  .addBtn{
+    left: 94px;
+  }
+}
+@media (max-width:1024px) {
+    .card{
+      width: 350px;
+    }
+}
+@media(max-width:920px){
+  .searchbarInput{
+    width: 500px;
+  }
+  .addBtn{
+    left: 45px;
+  }
+}
+@media(max-width:830px){
+  .searchbarInput{
+    width: 400px;
+  }
+  .addBtn{
+    left: 14.4vw;
+    height: 40px;
+    font-size: 20px;
+  }
+  .thmBtn{
+    height: 40px;
+    font-size: 20px;
+  }
+}
+@media(max-width:768px){
+  .searchbarInput{
+    width: 400px;
+  }
+  .addBtn{
+    left: 90px;
+    height: 35px;
+    font-size: 20px;
+  }
+  .thmBtn{
+    position: relative;
+    top: -20px;
+    height: 40px;
+  }
+  .card{
+    width: 300px;
+  }
+  .title{
+    max-width: 170px;
+  }
+}
+@media(max-width:736px){
+  .logo img{
+    width: 80px;
+    height: auto;
+  }
+  .navbar{
+    height: 180px;
+  }
+  .addBtn{
+    left: 80px;
+  }
+}
+@media(max-width:666px){
+  .navbar{
+    height: 240px;
+  }
+  .searchBar{
+    display: flex;
+    flex-direction: column;
+  }
+  .priority{
+    margin-bottom: 10px;
+  }
+  .searchbarInput{
+    margin-bottom: 10;
+  }
+  .categories{
+    margin-bottom: 10px;
+  }
+  .addBtn{
+    left:150px;
+    width: 90px;
+    height: 40px;
+  }
+  .thmBtn{
+    top:1px;
+  }
+  .body{
+    flex-direction: column;
+  }
+  .todo{
+    width: 100vw;
+    height: 35vh;
+  }
+  .done1{
+    width: 100vw;
+    height: 291.5px;
+  }
+  .todoCards{
+    padding: 0 30px;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    gap: 20px;
+  }
+  .logo .logoi{
+    display: none;
+  }
+  .searchBar{
+    display: block;
+    position: relative;
+    top:-10px;
+  }
+  .navbar{
+    flex-direction: column;
+    gap: 0;
+  }
+  .searchbarInput{
+    width: 90vw;
+  }
+  .priority{
+    width: 60px;
+    font-size: 12px;
+  }
+  .categories{
+    width: 80px;
+    font-size: 12px;
+  }
+  .addBtn{
+    left: 130px;
+  }
+  .logo .smallLogo{
+    display: block;
+    width: 45px;
+    height: auto;
+  }
+}
+@media(max-width:594px){
+  .logo .logoi{
+    display: none;
+  }
+  .searchBar{
+    display: block;
+    position: relative;
+    top:-10px;
+  }
+  .navbar{
+    flex-direction: column;
+    gap: 0;
+  }
+  .searchbarInput{
+    width: 90vw;
+  }
+  .priority{
+    width: 60px;
+    font-size: 12px;
+  }
+  .categories{
+    width: 80px;
+    font-size: 12px;
+  }
+  .addBtn{
+    left: 130px;
+  }
+  .logo .smallLogo{
+    display: block;
+    width: 45px;
+    height: auto;
+  }
+}
+@media(max-width:504px){
+  .addBtn{
+    left: 62px;
+  }
+}
+@media (max-width:425px){
+  .logo img{
+    width: 70px;
+    height: auto;
+  }
+  .navbar{
+    height: auto;
+  }
+  .searchbarInput{
+    width: 350px;
+    height: 40px;
+    font-size: 12px;
+  }
+  .priority{
+    width: 50px;
+    font-size: 8px;
+    height: 20px;
+  }
+  .categories{
+    width: 70px;
+    height: 20px;
+    font-size: 8px;
+  }
+  .addctg{
+    width: 55px;
+    font-size: 8px;
+    height: 20px;
+    white-space: nowrap;
+    padding-left: 3px;
+  }
+  .thmBtn{
+    width: 55px;
+    height: 25px;
+    font-size: 12px;
+    position: relative;
+    right: -10px;
+  }
+  .addBtn{
+    width: 55px;
+    height: 25px;
+    font-size: 12px;
+    left: 70px;
+  }
+  .card{
+    width: 300px;
+    font-size: 12px;
+  }
+  .title{
+    font-size: 17px;
+    max-width: 160px;
+    word-wrap: break-word;
+  }
+  
+  .category{
+    width: 85px;
+    height: 23px;
+    padding: 2px;
+  }
+  .heading{
+    font-size: 25px;
+  }
+  .im{
+    width: 25px;
+  }
+}
+@media(max-width:375px){
+  .card{
+    width: 280px;
+    font-size: 12px;
+  }
+  .title{
+    font-size: 18px;
+    max-width: 170px;
+    word-wrap: break-word;
+  }
+  
+  .category{
+    width: 90px;
+    height: 25px;
+    padding: 2px;
+  }
+  .heading{
+    font-size: 25px;
+  }
+  .im{
+    width: 25px;
+  }
+}
+@media(max-width:320px){
+  .searchbarInput{
+    width: 270px;
+  }
+  .addBtn{
+    left: 30px;
+  }
+  .card{
+    width: 250px;
+    font-size: 10px;
+  }
+  .title{
+    font-size: 15px;
+    max-width: 150px;
+    word-wrap: break-word;
+  }
+  
+  .category{
+    width: 70px;
+    height: 20px;
+    padding: 2px;
+  }
+  .heading{
+    font-size: 25px;
+  }
+  .im{
+    width: 25px;
+  }
 }
