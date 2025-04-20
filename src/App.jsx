@@ -84,7 +84,8 @@ function App() {
                   deleteClick={() => { handleDelete(ele.id) }}
                   onchange={() => { handleCheck(ele.id) }} />
               )
-            }) : <h3 className='status'>Add some tasks</h3>}</div>
+            }) : <h3 className='status'>Add some tasks</h3>}
+          </div>
         </div>
         <div className="done1 align">
           <div>
@@ -92,11 +93,11 @@ function App() {
             <h1 className='heading'>Done</h1>
           </div>
           <div className='todoCards'>
-          {!(done.length === 0) ? done.map((ele) => {
-            return (
-              <Card key={ele.id} title={ele.title} category={ele.category} priority={ele.priority} doneCard="done" theme={theme} />
-            )
-          }) : <h3 className='status' >No tasks completed</h3>}</div>
+            {!(done.length === 0) ? done.map((ele) => {
+              return (
+                <Card key={ele.id} title={ele.title} category={ele.category} priority={ele.priority} doneCard="done" theme={theme} />
+              )
+            }) : <h3 className='status' >No tasks completed</h3>}</div>
         </div>
       </div>
     </div>
