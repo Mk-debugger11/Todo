@@ -4,35 +4,50 @@ import edit from '../assets/edit.png'
 import trash from '../assets/trash.png'
 import Button from './button';
 import Input from './inputbar';
+import Dropdown from './dropdown';
 function Card(props) {
+    const priorityOptions = ["High", "Medium", "Low"]
+    const [priority, setPriority] = useState(props.priority)
     const [color, setColor] = useState('')
     function Color() {
-        if (props.priority === "High") {
+        if (priority === "High") {
             setColor("high")
         }
-        else if (props.priority === "Medium") {
+        else if (priority === "Medium") {
             setColor("medium")
         }
-        else if (props.priority === "Low") {
+        else if (priority === "Low") {
             setColor("low")
         }
     }
-    useEffect(Color, [])
+    useEffect(Color, [priority])
+    const [newTitle, setNewTitle] = useState(props.title);
     return (
-        <div className={`cardParent ${props.doneCard}`}>
+        <div className={`cardParent ${props.doneCard} ${props.theme}`}>
             <div className="checkbox">
-                <Input type="checkbox" />
+                <Input type="checkbox" onchange={props.onchange} />
             </div>
             <div className={`card ${props.doneCard}`}>
                 <div className="left">
-                    <div className="title">{props.title}</div>
+                    {props.edit1 ?
+                        <div>
+                            <Input onchange={(e) => { setNewTitle(e.target.value) }}
+                                value={newTitle}
+                                class="editInput"
+                            />
+                            <Button name="save" class="addctg" onclick={() => { props.handleEdit(props.id, newTitle, priority) }} />
+                        </div>
+                        : <div className="title">{props.title}</div>}
                     <div className="category">{props.category}</div>
                 </div>
                 <div className="right">
-                    <div className={`pri ${color}`}>{props.priority}</div>
+                    {props.edit1 ?
+                        <div><Dropdown options={priorityOptions} value={priority} onchange={(e) => { setPriority(e.target.value) }} /></div>
+                        : <div className={`pri ${color}`}>{props.priority}</div>}
+
                     <div className="crud">
-                        <div className="edit"><Button name={<img src={edit} alt="" />} class="editBtn" /></div>
-                        <div className="delete"><Button name={<img src={trash} alt="" />} class="editBtn" /></div>
+                        <div className="edit"><Button name={<img src={edit} alt="" />} onclick={props.editClick} class="editBtn" /></div>
+                        <div className="delete"><Button name={<img src={trash} alt="" />} onclick={props.deleteClick} class="editBtn" /></div>
                     </div>
                 </div>
             </div>
