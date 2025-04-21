@@ -6,8 +6,35 @@ import Button from './button';
 import Dropdown from './dropdown';
 import logo from '../assets/logo.png'
 import logoSmall from '../assets/logoSmall.png'
-function Navbar({ taskArray,theme1 }) {
-    const [theme,setTheme] = useState('Light')
+function Navbar({ taskArray,theme1,catArr }) {
+    const workCategories = [
+        "Personal",
+        "Work",
+        "Urgent",
+        "Meeting",
+        "Email",
+        "Call",
+        "Shopping",
+        "Fitness",
+        "Health",
+        "Study",
+        "Project",
+        "Finance",
+        "Chores",
+        "Errands",
+        "Reading",
+        "Writing",
+        "Learning",
+        "Development",
+        "Design",
+        "Maintenance",
+        "Marketing",
+        "Social",
+        "Hobby",
+        "Travel",
+        "Miscellaneous"
+      ];
+    const [theme,setTheme] = useState('Dark')
     // priority array to show priority for tasks
     const priorityOptions = ["High", "Medium", "Low"]
     // main task array for storing all tasks
@@ -28,7 +55,7 @@ function Navbar({ taskArray,theme1 }) {
     }
     // final function to add task into array
     function addBtn() {
-        if (taskInput ==="" || priority===null || category ===null){
+        if (taskInput ==="" || priority==="" || category ===""){
             alert("Please complete all the fields")
         }
         else{
@@ -58,12 +85,17 @@ function Navbar({ taskArray,theme1 }) {
     }
     // array for all the categories to be displayed in dropdown
     const [categoryArray,setCategoryArray] = useState(()=>{
-        const category = JSON.parse(localStorage.getItem('category')) || []
+        const category = JSON.parse(localStorage.getItem('category')) || workCategories
         return category
     })
     useEffect(()=>{
         localStorage.setItem('category',JSON.stringify(categoryArray))
+        catArr(categoryArray)
     },[categoryArray])
+    //useeffect for sending category array on mounting
+    useEffect(()=>{
+        catArr(categoryArray)
+    },[])
     // boolean for switching between dropdown and add category
     const [addCategory, setAddCategory] = useState(false)
     // input for custom category

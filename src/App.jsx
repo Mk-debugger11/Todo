@@ -3,9 +3,13 @@ import Navbar from './components/navbar'
 import todo1 from './assets/todo.png'
 import done1 from './assets/done.png'
 import Card from './components/taskCard'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import Button from './components/button'
+import Dropdown from './components/dropdown'
 function App() {
-  const [theme, setTheme] = useState("light")
+  const priorityOptions = ["High", "Medium", "Low"]
+  const [catArr,setcatArr] = useState([])
+  const [theme, setTheme] = useState("Dark")
   const [tasks, setTasks] = useState(() => {
     const array = JSON.parse(localStorage.getItem('taskStorage')) || []
     return array
@@ -60,17 +64,53 @@ function App() {
   function handleTheme(thm) {
     setTheme(thm)
   }
+  const [filter,setFilter] = useState(false)
+  const filterRef = useRef(null)
+  useEffect(()=>{
+    function handleClick(event){
+      if(filterRef.current && !filterRef.current.contains(event.target)){
+        setFilter(false)
+      }
+    }
+    document.addEventListener('mousedown',handleClick)
+  },[])
+  const [catFilter,setCatFilter] = useState("")
+  const [priorityFilter,setPriorityFilter] = useState("")
+  const [filterArray,setFilteredArray] = useState([])
+  useEffect(()=>{
+    const filteredArray = tasks.filter((ele)=>{
+      const pri = catFilter === "" || ele.category === catFilter
+      const cat = priorityFilter === "" || ele.priority === priorityFilter
+      return pri && cat
+    })
+    setFilteredArray(filteredArray)
+  },[catFilter,priorityFilter,tasks])
   return (
     <div className={`main ${theme}`}>
-      <Navbar taskArray={handleArray} theme1={handleTheme} ></Navbar>
+      <Navbar taskArray={handleArray} theme1={handleTheme} catArr = {(e)=>{setcatArr(e)}}></Navbar>
       <div className="body">
         <div className="todo align">
-          <div>
-            <img src={todo1} className='im' />
-            <h1 className='heading'>To-do</h1>
+          <div style={{display:'flex',alignItems:'center',justifyContent:'center',width:'330px'}}>
+            <div>
+              <img src={todo1} className='im' />
+              <h1 className='heading'>To-do</h1>
+            </div>
+            <div className='filterMenu'>
+              <Button onclick = {()=>{setFilter(true)}} name={<img src='./src/assets/filter.png' style={{width:'25px', height:'auto'}}/>} class="filter"/>
+              {filter &&
+              <div className='filterCard' ref={filterRef}>
+                <Dropdown options = {priorityOptions}  type1 = "Priority" class="filterDropdown" onchange={(e)=>{
+                  setPriorityFilter(e.target.value)
+                }}/>
+                <Dropdown options = {catArr}  type1 = "Category" class="filterDropdown" onchange={(e)=>{
+                  setCatFilter(e.target.value)
+                }}/>
+              </div>
+              }
+            </div>
           </div>
           <div className='todoCards'>
-            {!(todo.length === 0) ? todo.map((ele) => {
+            {!(todo.length === 0) ? filterArray.map((ele) => {
               return (
                 <Card
                   key={ele.id}
