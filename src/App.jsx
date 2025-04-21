@@ -24,6 +24,7 @@ function App() {
   const done = tasks.filter((ele) => {
     return ele.done === true
   })
+  done.sort((a,b)=>b.id - a.id)
   function handleArray(task) {
     setTasks([...tasks, task])
   }
@@ -82,8 +83,10 @@ function App() {
     const filteredArray = tasks.filter((ele)=>{
       const pri = catFilter === "" || ele.category === catFilter
       const cat = priorityFilter === "" || ele.priority === priorityFilter
-      return pri && cat
+      const don = ele.done === false
+      return pri && cat && don
     })
+    filteredArray.sort((a,b)=>b.id - a.id)
     setFilteredArray(filteredArray)
   },[catFilter,priorityFilter,tasks])
   return (
