@@ -6,6 +6,7 @@ import Card from './components/taskCard'
 import { useState, useEffect, useRef } from 'react'
 import Button from './components/button'
 import Dropdown from './components/dropdown'
+import filterImg from './assets/filter.png'
 function App() {
   const priorityOptions = ["High", "Medium", "Low"]
   const [catArr,setcatArr] = useState([])
@@ -96,13 +97,13 @@ function App() {
               <h1 className='heading'>To-do</h1>
             </div>
             <div className='filterMenu'>
-              <Button onclick = {()=>{setFilter(true)}} name={<img src='./src/assets/filter.png' style={{width:'25px', height:'auto'}}/>} class="filter"/>
+              <Button onclick = {()=>{setFilter(true)}} name={<img src={filterImg} style={{width:'25px', height:'auto'}}/>} class="filter"/>
               {filter &&
               <div className='filterCard' ref={filterRef}>
-                <Dropdown options = {priorityOptions}  type1 = "Priority" class="filterDropdown" onchange={(e)=>{
+                <Dropdown value={priorityFilter} options = {priorityOptions}  type1 = "Priority" class="filterDropdown" onchange={(e)=>{
                   setPriorityFilter(e.target.value)
                 }}/>
-                <Dropdown options = {catArr}  type1 = "Category" class="filterDropdown" onchange={(e)=>{
+                <Dropdown value={catFilter} options = {catArr}  type1 = "Category" class="filterDropdown" onchange={(e)=>{
                   setCatFilter(e.target.value)
                 }}/>
               </div>
