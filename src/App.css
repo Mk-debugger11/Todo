@@ -503,6 +503,9 @@
     top: 270px;
     left: 60vw;
   }
+  .todo{
+    border-right: 0;
+  }
 }
 @media(max-width:594px){
   .logo .logoi{
