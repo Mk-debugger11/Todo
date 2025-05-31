@@ -6,7 +6,11 @@ import Button from './button';
 import Dropdown from './dropdown';
 import logo from '../assets/logo.png'
 import logoSmall from '../assets/logoSmall.png'
-function Navbar({ taskArray,theme1,catArr }) {
+import usetaskStore from '../store/zustandStore';
+function Navbar({ catArr }) {
+    const addTask = usetaskStore(state => state.addTask) // importing zustand addtask function
+    const toggleTheme = usetaskStore(state => state.toggleTheme)
+    const theme = usetaskStore(state => state.theme)
     const workCategories = [
         "Personal",
         "Work",
@@ -34,7 +38,6 @@ function Navbar({ taskArray,theme1,catArr }) {
         "Travel",
         "Miscellaneous"
       ];
-    const [theme,setTheme] = useState('Dark')
     // priority array to show priority for tasks
     const priorityOptions = ["High", "Medium", "Low"]
     // main task array for storing all tasks
@@ -60,7 +63,7 @@ function Navbar({ taskArray,theme1,catArr }) {
         }
         else{
             const task = converToObject(taskInput,priority,category)
-            taskArray(task)
+            addTask(task)
             setInput('');
             setCategory("")
             setPriority("")
@@ -119,10 +122,6 @@ function Navbar({ taskArray,theme1,catArr }) {
         setAddCategory(false)
         setCatInput('')
     }
-    function changeTheme(){
-        setTheme(theme === "Light" ? "Dark" : "Light")
-    }
-    useEffect(()=>{theme1(theme)},[theme])
     return (
         <div className= {`navbar ${theme}`} >
             <div className="logo">
@@ -144,7 +143,7 @@ function Navbar({ taskArray,theme1,catArr }) {
                 <Button name="Add" class="addBtn darkbtn" onclick={addBtn}/>
             </div>
             <div className='toggle'>
-                <Button name={theme} class="thmBtn darkbtn" onclick={changeTheme}/>
+                <Button name={theme} class="thmBtn darkbtn" onclick={toggleTheme}/>
             </div>
         </div>
     )

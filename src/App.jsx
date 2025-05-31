@@ -7,64 +7,24 @@ import { useState, useEffect, useRef } from 'react'
 import Button from './components/button'
 import Dropdown from './components/dropdown'
 import filterImg from './assets/filter.png'
+import usetaskStore from './store/zustandStore'
 function App() {
+  const globalTasks = usetaskStore(state => state.tasks)
+  const deleteTask = usetaskStore(state => state.deleteTask)
+  const toggleStatus = usetaskStore(state => state.toggleStatus)
+  const theme = usetaskStore(state => state.theme)
   const priorityOptions = ["High", "Medium", "Low"]
   const [catArr,setcatArr] = useState([])
-  const [theme, setTheme] = useState("Dark")
-  const [tasks, setTasks] = useState(() => {
-    const array = JSON.parse(localStorage.getItem('taskStorage')) || []
-    return array
-  })
-  useEffect(() => {
-    localStorage.setItem('taskStorage', JSON.stringify(tasks))
-  }, [tasks])
-  const todo = tasks.filter((ele) => {
+  const todo = globalTasks.filter((ele) => {
     return ele.done === false
   })
-  const done = tasks.filter((ele) => {
+  const done = globalTasks.filter((ele) => {
     return ele.done === true
   })
   done.sort((a,b)=>b.id - a.id)
-  function handleArray(task) {
-    setTasks([...tasks, task])
-  }
-  function handleCheck(id) {
-    const updated = tasks.map((ele) => {
-      if (ele.id === id) {
-        return { ...ele, done: true };
-      }
-      else {
-        return ele
-      }
-    })
-    setTasks(updated)
-  }
-  function handleDelete(id) {
-    const updated = tasks.filter((ele) => {
-      if (ele.id !== id) {
-        return ele;
-      }
-    })
-    setTasks(updated)
-  }
   const [edit, setEdit] = useState(null)
   function handleEditTask(id) {
     setEdit(id)
-  }
-  function handleEdi(id, newtitle, priority) {
-    const updated = tasks.map((ele) => {
-      if (ele.id === id) {
-        return { ...ele, title: newtitle, priority: priority }
-      }
-      else {
-        return ele
-      }
-    })
-    setTasks(updated)
-    setEdit(null)
-  }
-  function handleTheme(thm) {
-    setTheme(thm)
   }
   const [filter,setFilter] = useState(false)
   const filterRef = useRef(null)
@@ -80,7 +40,7 @@ function App() {
   const [priorityFilter,setPriorityFilter] = useState("")
   const [filterArray,setFilteredArray] = useState([])
   useEffect(()=>{
-    const filteredArray = tasks.filter((ele)=>{
+    const filteredArray = todo.filter((ele)=>{
       const pri = catFilter === "" || ele.category === catFilter
       const cat = priorityFilter === "" || ele.priority === priorityFilter
       const don = ele.done === false
@@ -88,10 +48,10 @@ function App() {
     })
     filteredArray.sort((a,b)=>b.id - a.id)
     setFilteredArray(filteredArray)
-  },[catFilter,priorityFilter,tasks])
+  },[catFilter,priorityFilter,globalTasks])
   return (
     <div className={`main ${theme}`}>
-      <Navbar taskArray={handleArray} theme1={handleTheme} catArr = {(e)=>{setcatArr(e)}}></Navbar>
+      <Navbar catArr = {(e)=>{setcatArr(e)}}></Navbar>
       <div className="body">
         <div className="todo align">
           <div style={{display:'flex',alignItems:'center',justifyContent:'center',width:'330px'}}>
@@ -122,11 +82,11 @@ function App() {
                   title={ele.title} //this is passing data from parent to child 
                   category={ele.category}
                   priority={ele.priority}
-                  handleEdit={handleEdi}
+                  handleEdit={()=> {setEdit(null)}}
                   edit1={edit === ele.id}
                   editClick={() => { handleEditTask(ele.id) }}
-                  deleteClick={() => { handleDelete(ele.id) }}
-                  onchange={() => { handleCheck(ele.id) }} />
+                  deleteClick={() => { deleteTask(ele.id) }} //done in zustand
+                  onchange={() => { toggleStatus(ele.id) }} /> //done in zustand
               )
             }) : <h3 className='status'>Add some tasks</h3>}
           </div>

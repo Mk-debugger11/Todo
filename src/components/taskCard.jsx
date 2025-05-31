@@ -5,7 +5,9 @@ import trash from '../assets/trash.png'
 import Button from './button';
 import Input from './inputbar';
 import Dropdown from './dropdown';
+import usetaskStore from '../store/zustandStore';
 function Card(props) {
+    const editTask = usetaskStore(state => state.editTask)
     const priorityOptions = ["High", "Medium", "Low"]
     const [priority, setPriority] = useState(props.priority)
     const [color, setColor] = useState('')
@@ -35,7 +37,10 @@ function Card(props) {
                                 value={newTitle}
                                 class="editInput"
                             />
-                            <Button name="save" class="addctg" onclick={() => { props.handleEdit(props.id, newTitle, priority) }} />
+                            <Button name="save" class="addctg" onclick={() => { 
+                                editTask(props.id, newTitle, priority)
+                                props.handleEdit
+                            }} />
                         </div>
                         : <div className="title">{props.title}</div>}
                     <div className="category">{props.category}</div>
