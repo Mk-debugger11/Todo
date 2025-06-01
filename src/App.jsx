@@ -9,10 +9,10 @@ import Dropdown from './components/dropdown'
 import filterImg from './assets/filter.png'
 import usetaskStore from './store/zustandStore'
 function App() {
-  const globalTasks = usetaskStore(state => state.tasks)
-  const deleteTask = usetaskStore(state => state.deleteTask)
-  const toggleStatus = usetaskStore(state => state.toggleStatus)
-  const theme = usetaskStore(state => state.theme)
+  const globalTasks = usetaskStore(state => state.tasks) //zustand
+  const deleteTask = usetaskStore(state => state.deleteTask) //zustand
+  const toggleStatus = usetaskStore(state => state.toggleStatus) //zustand
+  const theme = usetaskStore(state => state.theme) //zustand
   const priorityOptions = ["High", "Medium", "Low"]
   const [catArr,setcatArr] = useState([])
   const todo = globalTasks.filter((ele) => {

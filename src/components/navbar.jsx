@@ -9,8 +9,8 @@ import logoSmall from '../assets/logoSmall.png'
 import usetaskStore from '../store/zustandStore';
 function Navbar({ catArr }) {
     const addTask = usetaskStore(state => state.addTask) // importing zustand addtask function
-    const toggleTheme = usetaskStore(state => state.toggleTheme)
-    const theme = usetaskStore(state => state.theme)
+    const toggleTheme = usetaskStore(state => state.toggleTheme) //zustand
+    const theme = usetaskStore(state => state.theme) //zustand
     const workCategories = [
         "Personal",
         "Work",

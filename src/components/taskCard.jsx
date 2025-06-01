@@ -7,7 +7,7 @@ import Input from './inputbar';
 import Dropdown from './dropdown';
 import usetaskStore from '../store/zustandStore';
 function Card(props) {
-    const editTask = usetaskStore(state => state.editTask)
+    const editTask = usetaskStore(state => state.editTask) //zustand
     const priorityOptions = ["High", "Medium", "Low"]
     const [priority, setPriority] = useState(props.priority)
     const [color, setColor] = useState('')
