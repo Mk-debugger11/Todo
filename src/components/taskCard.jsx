@@ -39,7 +39,7 @@ function Card(props) {
                             />
                             <Button name="save" class="addctg" onclick={() => { 
                                 editTask(props.id, newTitle, priority)
-                                props.handleEdit
+                                props.handleEdit()
                             }} />
                         </div>
                         : <div className="title">{props.title}</div>}
